@@ -7,9 +7,9 @@
 [node name="Level" type="Node2D"]
 
 [node name="Bubba" parent="." instance=ExtResource( 2 )]
-position = Vector2( 456.718, 340.083 )
+position = Vector2( 420, 500 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 589.314, 277.469 )
+position = Vector2( 484.051, 435.918 )
 
 [node name="Map" parent="." instance=ExtResource( 3 )]

@@ -1,22 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://tex/BubbaHead.png" type="Texture" id=1]
 [ext_resource path="res://tex/BubbaBody.png" type="Texture" id=2]
+[ext_resource path="res://Bubba.gd" type="Script" id=3]
 
-[node name="Bubba" type="Node2D"]
+[node name="Bubba" type="KinematicBody2D"]
+script = ExtResource( 3 )
 
-[node name="Body" type="KinematicBody2D" parent="."]
-
-[node name="BodySprite" type="Sprite" parent="Body"]
+[node name="BodySprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body"]
+[node name="UpperLevel" type="CollisionPolygon2D" parent="."]
 build_mode = 1
 polygon = PoolVector2Array( -287.556, 9.15321, -255.203, -22.8596, 254.618, -22.8596, 286.972, 9.15322 )
 one_way_collision = true
 one_way_collision_margin = 8.0
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Body"]
+[node name="LowerLevel" type="CollisionPolygon2D" parent="."]
 position = Vector2( -9.92749, 96.5675 )
 build_mode = 1
 polygon = PoolVector2Array( -404.678, 7.84546, -372.603, -23.4749, 392.293, -23.4749, 424.745, 8.60017 )
@@ -37,3 +37,11 @@ polygon = PoolVector2Array( -120.44, -96.1751, -49.5862, -93.2633, 28.3854, -84.
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="WakeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReadyTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="WakeTimer" to="." method="_on_WakeTimer_timeout"]
+[connection signal="timeout" from="ReadyTimer" to="." method="_on_ReadyTimer_timeout"]
