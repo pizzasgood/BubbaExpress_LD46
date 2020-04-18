@@ -50,6 +50,7 @@ func fire():
 	get_tree().get_current_scene().find_node("Level").add_child(p)
 	ready_to_fire = false
 	$CooldownTimer.start()
+	$ShootSound.play()
 
 func _on_CooldownTimer_timeout():
 	ready_to_fire = true

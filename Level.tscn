@@ -16,4 +16,4 @@ position = Vector2( 484.051, 435.918 )
 [node name="Map" parent="." instance=ExtResource( 3 )]
 
 [node name="RotatingGun" parent="." instance=ExtResource( 4 )]
-position = Vector2( 958.685, 188.731 )
+position = Vector2( 1330.68, 166.731 )

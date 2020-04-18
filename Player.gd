@@ -67,6 +67,7 @@ func hp_set(new_hp):
 	else:
 		sprite.modulate = Color(1, 0, 0, 1)
 	$DamageFlash.start()
+	$OwSound.play()
 	hp = new_hp
 	if hp <= 0:
 		call_deferred("die")

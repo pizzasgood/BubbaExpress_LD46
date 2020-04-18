@@ -30,6 +30,7 @@ func _physics_process(delta):
 func wake():
 	state = WAKING
 	$WakeTimer.start()
+	$StartupRumble.play()
 
 func get_up():
 	state = RISING
@@ -37,6 +38,8 @@ func get_up():
 func get_ready():
 	state = STANDING
 	$ReadyTimer.start()
+	$StartupRumble.stop()
+	$EngineSound.play()
 
 func get_moving():
 	state = WALKING
