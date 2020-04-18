@@ -1,3 +1,4 @@
+tool
 extends Node2D
 
 var block_width = 1024
