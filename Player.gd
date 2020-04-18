@@ -9,7 +9,7 @@ var jump_started = 0
 var last_state = "null"
 var current_state = "null"
 
-var hp = 100
+var hp = 100 setget hp_set
 
 onready var sprite = find_node("Sprite")
 
@@ -61,16 +61,13 @@ func _handle_input():
 func _on_DamageFlash_timeout():
 	sprite.modulate = Color(1, 1, 1, 1)
 
-func damage(amount):
-	change_hp(-amount)
-
-func change_hp(amount):
-	if amount > 0:
+func hp_set(new_hp):
+	if new_hp > hp:
 		sprite.modulate = Color(0, 1, 0.25, 1)
 	else:
 		sprite.modulate = Color(1, 0, 0, 1)
 	$DamageFlash.start()
-	hp += amount
+	hp = new_hp
 	if hp <= 0:
 		call_deferred("die")
 

@@ -10,8 +10,8 @@ func _ready():
 
 func _on_body_entered(object):
 	if object.is_in_group("player"):
-		object.damage(initial_damage)
+		object.hp -= initial_damage
 
 func _process(delta):
 	if overlaps_body(player):
-		player.damage(ongoing_damage * delta)
+		player.hp -= ongoing_damage * delta
