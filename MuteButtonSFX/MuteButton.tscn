@@ -7,6 +7,8 @@
 [node name="MuteButton" type="TextureButton"]
 margin_right = 1024.0
 margin_bottom = 600.0
+focus_mode = 0
+enabled_focus_mode = 0
 texture_normal = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
