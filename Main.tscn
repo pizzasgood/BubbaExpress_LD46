@@ -30,3 +30,4 @@ margin_left = 992.0
 visible = false
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource( 4 )]
+visible = false
