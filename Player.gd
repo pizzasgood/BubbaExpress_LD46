@@ -11,7 +11,8 @@ var current_state = "null"
 
 var hp = 100 setget hp_set
 
-onready var sprite = find_node("Sprite")
+onready var sprite = find_node("BodySprite")
+onready var arm_sprite = find_node("ArmSprite")
 
 func _ready():
 	pass
@@ -41,10 +42,9 @@ func _handle_input():
 	velocity.x = 0
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += max_speed
-		sprite.flip_h = false
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= max_speed
-		sprite.flip_h = true
+
 
 	#jump
 	if Input.is_action_pressed("jump"):
@@ -57,6 +57,24 @@ func _handle_input():
 			jumping = false
 	else:
 		jumping = false
+
+	# animate sprite
+	if is_on_floor() and velocity.x != 0:
+		sprite.play()
+	elif is_on_floor():
+		sprite.stop()
+		sprite.frame = 0
+	else:
+		sprite.stop()
+		sprite.frame = 1
+
+	# flip if needed
+	var mouse_pos = get_viewport().canvas_transform.inverse() * get_viewport().get_mouse_position()
+	sprite.flip_h = mouse_pos.x < global_position.x
+	arm_sprite.flip_v = mouse_pos.x < global_position.x
+
+	# point the gun
+	arm_sprite.look_at(mouse_pos)
 
 func _on_DamageFlash_timeout():
 	sprite.modulate = Color(1, 1, 1, 1)
