@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/muted.png-ff7e371827b16f0f30ff8ccbf3aa46ac.stex"
+path="res://.import/unmuted.png-9383308e1485be108f4f72787632fa56.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MuteButton/muted.png"
-dest_files=[ "res://.import/muted.png-ff7e371827b16f0f30ff8ccbf3aa46ac.stex" ]
+source_file="res://MuteButtonSFX/unmuted.png"
+dest_files=[ "res://.import/unmuted.png-9383308e1485be108f4f72787632fa56.stex" ]
 
 [params]
 

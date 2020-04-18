@@ -7,7 +7,6 @@ var walk_speed = 100
 enum { BURROWED, WAKING, RISING, STANDING, WALKING }
 var state = BURROWED
 
-
 func _ready():
 	wake()
 
@@ -41,6 +40,7 @@ func get_ready():
 
 func get_moving():
 	state = WALKING
+	Globals.get_bgm().play()
 
 
 func _on_WakeTimer_timeout():

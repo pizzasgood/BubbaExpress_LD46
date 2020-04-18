@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://MuteButton/MuteButton.gd" type="Script" id=1]
-[ext_resource path="res://MuteButton/muted.png" type="Texture" id=2]
-[ext_resource path="res://MuteButton/unmuted.png" type="Texture" id=3]
+[ext_resource path="res://MuteButtonSFX/MuteButton.gd" type="Script" id=1]
+[ext_resource path="res://MuteButtonSFX/muted.png" type="Texture" id=2]
+[ext_resource path="res://MuteButtonSFX/unmuted.png" type="Texture" id=3]
 
 [node name="MuteButton" type="TextureButton"]
 margin_right = 1024.0
