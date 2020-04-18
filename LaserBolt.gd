@@ -15,3 +15,4 @@ func _physics_process(delta):
 func _on_LaserBolt_body_entered(body):
 	if "hp" in body:
 		body.hp -= damage
+		queue_free()
