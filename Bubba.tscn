@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://tex/BubbaHead.png" type="Texture" id=1]
+[ext_resource path="res://tex/BubbaBody.png" type="Texture" id=2]
+
+[node name="Bubba" type="Node2D"]
+
+[node name="Body" type="KinematicBody2D" parent="."]
+
+[node name="BodySprite" type="Sprite" parent="Body"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body"]
+build_mode = 1
+polygon = PoolVector2Array( -287.556, 9.15321, -255.203, -22.8596, 254.618, -22.8596, 286.972, 9.15322 )
+one_way_collision = true
+one_way_collision_margin = 8.0
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Body"]
+position = Vector2( -9.92749, 96.5675 )
+build_mode = 1
+polygon = PoolVector2Array( -404.678, 7.84546, -372.603, -23.4749, 392.293, -23.4749, 424.745, 8.60017 )
+one_way_collision = true
+one_way_collision_margin = 8.0
+
+[node name="Head" type="KinematicBody2D" parent="."]
+position = Vector2( 555.876, 123.606 )
+
+[node name="HeadSprite" type="Sprite" parent="Head"]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Head"]
+polygon = PoolVector2Array( -120.44, -96.1751, -49.5862, -93.2633, 28.3854, -84.2044, 78.8567, -68.9983, 103.122, -34.0567, 111.857, -0.0856476, 110.886, 34.5324, 99.8864, 56.8563, 102.475, 65.2681, 87.5921, 80.4742, 46.8268, 93.7391, -11.7327, 91.4743, -47.645, 82.4154, -61.2334, 64.2975, -58.3216, 46.1797, -68.6747, -5.58572, -85.1749, -46.6745, -97.7927, -71.5866 )
+__meta__ = {
+"_edit_lock_": true
+}
