@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://terrain/Hills.png" type="Texture" id=1]
+[ext_resource path="res://terrain/Mountains.png" type="Texture" id=2]
+[ext_resource path="res://ParallaxBackground.gd" type="Script" id=3]
+[ext_resource path="res://terrain/Sky.png" type="Texture" id=4]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource( 3 )
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 2048, 1024 )
+
+[node name="Sprite" type="Sprite" parent="Sky"]
+texture = ExtResource( 4 )
+
+[node name="Mountains" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.25, 0.25 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="Mountains"]
+texture = ExtResource( 2 )
+
+[node name="Hills" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="Hills"]
+texture = ExtResource( 1 )
