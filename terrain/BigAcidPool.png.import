@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Big Acid Pool.png-ea289bede79abfac08233a5ce1378aa5.stex"
+path="res://.import/BigAcidPool.png-609a8a78617a90d0aeef4e4531db9651.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/Big Acid Pool.png"
-dest_files=[ "res://.import/Big Acid Pool.png-ea289bede79abfac08233a5ce1378aa5.stex" ]
+source_file="res://terrain/BigAcidPool.png"
+dest_files=[ "res://.import/BigAcidPool.png-609a8a78617a90d0aeef4e4531db9651.stex" ]
 
 [params]
 

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://terrain/AcidPools.png" type="Texture" id=1]
+[ext_resource path="res://terrain/Acid.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 427.702, 25.7641 )
+
+[node name="Ground" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -510.901, -5, -441.94, -7.28479, -419.245, -1.8812, -420.325, 54.8566, -403.574, 97.545, -368.451, 101.327, -343.594, 91.0606, -328.464, 73.7691, -314.955, 24.5964, -273.348, 15.9507, -216.069, 38.1054, -144.742, 42.4283, -83.6816, 31.0807, -46.3968, 35.944, -49.639, 84.5763, 4.39694, 104.029, 52.489, 93.7624, 89.2334, 48.9126, 131.381, 40.2669, 167.045, 42.4283, 201.628, 30.5404, 259.446, 28.9193, 296.191, 21.3543, 298.893, 66.2041, 339.96, 105.11, 376.704, 108.352, 412.368, 86.7377, 416.691, 57.018, 409.126, 7.84526, 453.976, -1.88121, 512, -5, 512, 255.112, -512, 255.544 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Acid" type="Area2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Acid"]
+position = Vector2( 0, 92 )
+shape = SubResource( 1 )

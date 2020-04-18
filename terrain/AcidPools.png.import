@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Acid Pools.png-cf4e049a1bd913aa9df83917d06d233c.stex"
+path="res://.import/AcidPools.png-f7a1380cb41db86d58c00ca0f6f8e265.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/Acid Pools.png"
-dest_files=[ "res://.import/Acid Pools.png-cf4e049a1bd913aa9df83917d06d233c.stex" ]
+source_file="res://terrain/AcidPools.png"
+dest_files=[ "res://.import/AcidPools.png-f7a1380cb41db86d58c00ca0f6f8e265.stex" ]
 
 [params]
 

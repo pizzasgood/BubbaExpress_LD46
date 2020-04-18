@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://terrain/Flat.png" type="Texture" id=1]
+
+[node name="Ground" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -510.901, -5, -451.924, -7.74686, -406.483, -3.45999, -360.185, -10.319, -281.329, -9.59283, -236.216, -13.5734, -181.816, -1.63181, -116.137, -10.9197, -21.9313, -3.62207, 51.7084, -7.6026, 143.26, -4.94891, 224.861, -0.968384, 301.154, -8.26602, 340.296, -3.62207, 409.292, -0.304962, 473.465, 0.441833, 512, -5, 512, 255.112, -512, 255.544 )
+__meta__ = {
+"_edit_lock_": true
+}

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Extra Rough.png-18902ef76dee5f0c12adcf866b019b25.stex"
+path="res://.import/SmallMound.png-bb9059d4fa138e23c2ba17d8c320e11f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/Extra Rough.png"
-dest_files=[ "res://.import/Extra Rough.png-18902ef76dee5f0c12adcf866b019b25.stex" ]
+source_file="res://terrain/SmallMound.png"
+dest_files=[ "res://.import/SmallMound.png-bb9059d4fa138e23c2ba17d8c320e11f.stex" ]
 
 [params]
 

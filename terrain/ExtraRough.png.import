@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Small Dip.png-799c66df60a64b642ae7414fa4a8a710.stex"
+path="res://.import/ExtraRough.png-34556902bb859c54598c3a1af9b094ba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/Small Dip.png"
-dest_files=[ "res://.import/Small Dip.png-799c66df60a64b642ae7414fa4a8a710.stex" ]
+source_file="res://terrain/ExtraRough.png"
+dest_files=[ "res://.import/ExtraRough.png-34556902bb859c54598c3a1af9b094ba.stex" ]
 
 [params]
 

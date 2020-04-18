@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Small Mound.png-4ffb44cad9ae1223d9921198f60ff94c.stex"
+path="res://.import/SmallDip.png-63932ddfe6fc840e359fdf09e2ae2ce4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/Small Mound.png"
-dest_files=[ "res://.import/Small Mound.png-4ffb44cad9ae1223d9921198f60ff94c.stex" ]
+source_file="res://terrain/SmallDip.png"
+dest_files=[ "res://.import/SmallDip.png-63932ddfe6fc840e359fdf09e2ae2ce4.stex" ]
 
 [params]
 

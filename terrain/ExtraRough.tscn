@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://terrain/ExtraRough.png" type="Texture" id=1]
+
+[node name="Ground" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -510.901, -5, -469.027, -4.40762, -429.041, 23.1507, -376.626, 46.3862, -319.888, 49.088, -272.876, 36.6597, -270.715, -30.8853, -225.865, -54.6611, -181.015, -58.984, -123.737, -50.8786, -85.912, -37.3696, -65.9181, -20.0781, -72.9427, 39.9018, -55.6513, 44.7651, -28.6333, 70.162, 5.94986, 87.4535, 45.9365, 83.671, 77.8177, 58.8145, 122.127, 23.1507, 139.419, -27.6431, 200.479, -73.5737, 249.112, -68.1701, 369.612, -96.8092, 427.431, -73.5737, 441.48, -33.5871, 472.821, -9.27089, 512, -5, 512, 255.112, -512, 255.544 )
+__meta__ = {
+"_edit_lock_": true
+}
