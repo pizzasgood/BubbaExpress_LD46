@@ -9,6 +9,8 @@ var jump_started = 0
 var last_state = "null"
 var current_state = "null"
 
+var hp = 100
+
 onready var sprite = find_node("Sprite")
 
 func _ready():
@@ -26,14 +28,11 @@ func _physics_process(delta):
 		move_and_slide(velocity, Vector2.UP)
 		if is_on_ceiling():
 			jumping = false
-			current_state = "ouch!"
 	else:
 		if is_on_floor():
 			velocity.y = 0
-			current_state = "standing"
 		else:
 			velocity.y += 9.81
-			current_state = "falling"
 		move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
 
 
@@ -52,12 +51,28 @@ func _handle_input():
 		if is_on_floor():
 			jumping = true
 			jump_started = OS.get_ticks_msec()
-			print("jumping")
 		if OS.get_ticks_msec() < jump_started + jump_control_time:
 			velocity.y = -jump_speed
-			current_state = "ascending"
 		else:
 			jumping = false
-			current_state = "falling"
 	else:
 		jumping = false
+
+func _on_DamageFlash_timeout():
+	sprite.modulate = Color(1, 1, 1, 1)
+
+func damage(amount):
+	change_hp(-amount)
+
+func change_hp(amount):
+	if amount > 0:
+		sprite.modulate = Color(0, 1, 0.25, 1)
+	else:
+		sprite.modulate = Color(1, 0, 0, 1)
+	$DamageFlash.start()
+	hp += amount
+	if hp <= 0:
+		call_deferred("die")
+
+func die():
+	get_tree().get_current_scene().find_node("GameOver").activate()

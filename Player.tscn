@@ -6,7 +6,9 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 10.8977
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -21,3 +23,11 @@ shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="DamageFlash" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+[connection signal="timeout" from="DamageFlash" to="." method="_on_DamageFlash_timeout"]
