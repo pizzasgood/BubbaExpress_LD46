@@ -13,6 +13,8 @@ var hp : int = max_hp setget hp_set
 onready var hp_bar : ProgressBar = get_tree().get_current_scene().find_node("PlayerBar")
 var friendly := true
 
+var weapons = []
+
 var carried_item = null
 
 onready var sprite = find_node("BodySprite")
@@ -24,6 +26,7 @@ var platform_collision_layer = int(pow(2, 2))
 func _ready():
 	hp_bar.max_value = max_hp
 	hp_bar.value = hp
+	weapons.append(weapon_sprite)
 
 func _physics_process(delta):
 	_handle_input()

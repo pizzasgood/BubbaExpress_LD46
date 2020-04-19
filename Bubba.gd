@@ -9,6 +9,8 @@ var hp : int = max_hp setget hp_set
 onready var hp_bar : ProgressBar = get_tree().get_current_scene().find_node("BubbaBar")
 var friendly := true
 
+var weapons = []
+
 onready var map = get_tree().get_current_scene().find_node("Map")
 
 enum { BURROWED, WAKING, RISING, STANDING, WALKING }
@@ -70,6 +72,9 @@ func hp_set(new_hp : int):
 	hp_bar.value = hp
 	if hp <= 0:
 		call_deferred("die")
+
+func register_weapon(weapon):
+	weapons.append(weapon)
 
 func die():
 	get_tree().get_current_scene().find_node("GameOver").activate()

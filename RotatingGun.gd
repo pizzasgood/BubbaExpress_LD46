@@ -10,7 +10,6 @@ export var active := true
 
 
 var target : Node2D = null
-var target_in_range := false
 
 onready var projectile = load("res://LaserBolt.tscn")
 onready var drop = load("res://LaserTurret.tscn")
@@ -21,29 +20,36 @@ func _ready():
 func _process(delta):
 	if active:
 		acquire_target()
-
 		if target != null:
 			look_at(target.global_position)
-
-		if target_in_range and ready_to_fire:
-			fire()
+			if in_range(target) and ready_to_fire:
+				fire()
 
 func acquire_target():
 	target = null
-	target_in_range = false
-	var best_distance = max_range_squared * 2
+	var max_threat = -1
 	var potentials
 	if find_owner().friendly:
 		potentials = get_tree().get_nodes_in_group("enemies")
 	else:
 		potentials = get_tree().get_nodes_in_group("friends")
 	for i in potentials:
-		var d = global_position.distance_squared_to(i.global_position)
-		if d < best_distance:
+		var threat = compute_threat(i)
+		if threat > max_threat:
 			target = i
-			best_distance = d
-	if best_distance < max_range_squared:
-		target_in_range = true
+			max_threat = threat
+
+func in_range(enemy):
+	return global_position.distance_squared_to(enemy.global_position) <= max_range_squared
+
+func compute_threat(enemy):
+	if not in_range(enemy):
+		return 0
+	var dps = 0
+	if "weapons" in enemy:
+		for w in enemy.weapons:
+			dps += w.damage / w.find_node("CooldownTimer").wait_time
+	return dps / enemy.hp
 
 func fire():
 	if ready_to_fire:
