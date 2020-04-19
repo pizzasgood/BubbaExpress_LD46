@@ -4,6 +4,8 @@ var walk_height = 150
 var stand_speed = 100
 var walk_speed = 100
 
+var hp = 10000
+
 enum { BURROWED, WAKING, RISING, STANDING, WALKING }
 var state = BURROWED
 

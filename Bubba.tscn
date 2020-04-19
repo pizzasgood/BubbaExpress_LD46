@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tex/BubbaHead.png" type="Texture" id=1]
 [ext_resource path="res://tex/BubbaBody.png" type="Texture" id=2]
 [ext_resource path="res://Bubba.gd" type="Script" id=3]
 [ext_resource path="res://sfx/rumble.ogg" type="AudioStream" id=4]
 [ext_resource path="res://sfx/engine.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Recycler.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 351.095, 3.86005 )
@@ -81,6 +82,9 @@ one_way_collision_margin = 8.0
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Recycler" parent="." instance=ExtResource( 6 )]
+position = Vector2( -130.004, 144.325 )
 
 [node name="WakeTimer" type="Timer" parent="."]
 one_shot = true
