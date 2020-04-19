@@ -7,27 +7,22 @@
 [ext_resource path="res://sfx/hit.wav" type="AudioStream" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 128, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 256, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 384, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 512, 0, 128, 128 )
 
@@ -60,6 +55,10 @@ position = Vector2( 32, 36 )
 wait_time = 0.25
 one_shot = true
 
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="OwSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 bus = "SFX"
@@ -67,4 +66,23 @@ bus = "SFX"
 [node name="DeadSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 bus = "SFX"
+
+[node name="ExplosionEffect" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+initial_velocity = 200.0
+initial_velocity_random = 0.75
+angular_velocity = 180.0
+angular_velocity_random = 0.75
+scale_amount = 4.0
+color = Color( 1, 0.631373, 0, 1 )
+hue_variation = 0.1
+hue_variation_random = 1.0
 [connection signal="timeout" from="DamageFlash" to="." method="_on_DamageFlash_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

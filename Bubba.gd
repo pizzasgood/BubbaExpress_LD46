@@ -71,8 +71,8 @@ func hp_set(new_hp : int):
 	if new_hp > hp:
 		pass
 	else:
-		var amount = hp - new_hp
-		if randf() < (float(amount) / float(hp)):
+		var chance = 1 if hp <= 0 else float(hp - new_hp) / float(hp)
+		if randf() < chance:
 			explode_weapon()
 	hp = int(min(new_hp, max_hp))
 	hp_bar.value = hp

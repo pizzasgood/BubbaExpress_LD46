@@ -22,8 +22,8 @@ func hp_set(new_hp):
 		sprite.modulate = Color(0, 1, 0.25, 1)
 	else:
 		sprite.modulate = Color(1, 0, 0, 1)
-		var amount = hp - new_hp
-		if randf() < (float(amount) / float(hp)):
+		var chance = 1 if hp <= 0 else float(hp - new_hp) / float(hp)
+		if randf() < chance:
 			explode_weapon()
 	$OwSound.play()
 	$DamageFlash.start()
@@ -43,11 +43,15 @@ func explode_weapon():
 		weapons[randi() % num_weapons].die()
 
 func die():
+	collision_layer = 0
+	collision_mask = 0
 	$DeadSound.play()
+	$BodySprite.visible =  false
+	$ExplosionEffect.emitting = true
 	for w in weapons:
 		w.active = false
 	generate_drops()
-	queue_free()
+	$DeathTimer.start()
 
 func generate_drops():
 	var d = drop.instance()
@@ -55,3 +59,7 @@ func generate_drops():
 	get_tree().get_current_scene().find_node("Level").add_child(d)
 	for w in weapons:
 		w.generate_drops()
+
+
+func _on_DeathTimer_timeout():
+	queue_free()

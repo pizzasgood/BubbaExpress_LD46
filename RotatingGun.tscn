@@ -14,7 +14,30 @@ texture = ExtResource( 1 )
 wait_time = 0.25
 one_shot = true
 
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 bus = "SFX"
+
+[node name="ExplosionEffect" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+initial_velocity = 75.0
+initial_velocity_random = 0.75
+angular_velocity = 180.0
+angular_velocity_random = 0.75
+scale_amount = 2.0
+color = Color( 1, 0.631373, 0, 1 )
+hue_variation = 0.1
+hue_variation_random = 1.0
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

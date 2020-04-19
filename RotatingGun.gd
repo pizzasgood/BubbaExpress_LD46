@@ -44,6 +44,8 @@ func in_range(enemy):
 	return global_position.distance_squared_to(enemy.global_position) <= max_range_squared
 
 func compute_threat(enemy):
+	if not "hp" in enemy or enemy.hp <= 0:
+		return -1
 	if not in_range(enemy):
 		return 0
 	var dps = 0
@@ -99,9 +101,13 @@ func die():
 	if volatile:
 		volatile = false
 		active = false
-		visible = false
+		$Sprite.visible =  false
+		$ExplosionEffect.emitting = true
 		drop = scrap
 		unregister_with_owner()
 		call_deferred("generate_drops")
-		queue_free()
-		# TODO: rune explosion particle effect
+		$DeathTimer.start()
+
+
+func _on_DeathTimer_timeout():
+	queue_free()
