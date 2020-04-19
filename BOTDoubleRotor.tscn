@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://RotatingGun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tex/BOT-DoubleRotor.png" type="Texture" id=2]
+[ext_resource path="res://BOT-Aerial.gd" type="Script" id=3]
+[ext_resource path="res://sfx/boom.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/hit.wav" type="AudioStream" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 256, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 384, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 512, 0, 128, 128 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
+
+[node name="BOTDoubleRotor" type="KinematicBody2D"]
+script = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -47.0487, 15.0313, -47.0487, 5.02017, -36.9155, -15.1242, -34.9621, -18.4205, -35.2063, -32.7047, -60.2341, -32.8268, -61.8212, -35.1464, -59.7457, -37.0998, 60.1436, -37.344, 62.2191, -35.1464, 60.0216, -32.7047, 34.9937, -32.8268, 34.9937, -18.2984, 47.0803, 5.26434, 46.8362, 15.1534, 34.1391, 38.2278, 29.4998, 38.2278, 18.1457, 15.1534, -17.6257, 15.0313, -30.4449, 38.5941, -34.5958, 38.7162 )
+
+[node name="BodySprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 6 )
+frame = 4
+playing = true
+
+[node name="RotatingGun" parent="BodySprite" instance=ExtResource( 1 )]
+position = Vector2( -32, 36 )
+
+[node name="RotatingGun2" parent="BodySprite" instance=ExtResource( 1 )]
+position = Vector2( 32, 36 )
+
+[node name="DamageFlash" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="OwSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX"
+
+[node name="DeadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+bus = "SFX"
+[connection signal="timeout" from="DamageFlash" to="." method="_on_DamageFlash_timeout"]

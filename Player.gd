@@ -11,6 +11,8 @@ var current_state = "null"
 
 var hp = 100 setget hp_set
 
+var carried_item = null
+
 onready var sprite = find_node("BodySprite")
 onready var arm_sprite = find_node("ArmSprite")
 onready var weapon_sprite = find_node("WeaponSprite")
@@ -80,7 +82,10 @@ func _handle_input():
 
 	# shoot at stuff
 	if Input.is_action_pressed("fire"):
-		weapon_sprite.fire()
+		if carried_item != null:
+			throw_item()
+		else:
+			weapon_sprite.fire()
 
 func _on_DamageFlash_timeout():
 	sprite.modulate = Color(1, 1, 1, 1)
@@ -98,3 +103,27 @@ func hp_set(new_hp):
 
 func die():
 	get_tree().get_current_scene().find_node("GameOver").activate()
+
+func can_pick_up():
+	return carried_item == null
+
+func pick_up(item):
+	if carried_item == null:
+		carried_item = item
+		carried_item.get_parent().remove_child(carried_item)
+		arm_sprite.add_child(carried_item)
+		carried_item.position = weapon_sprite.position
+		weapon_sprite.visible = false
+
+func throw_item():
+	if carried_item != null:
+		carried_item.position += 30 * Vector2.RIGHT
+		var pos = carried_item.global_position
+		carried_item.get_parent().remove_child(carried_item)
+		get_tree().get_current_scene().find_node("Level").add_child(carried_item)
+		carried_item.global_position = pos
+		carried_item.linear_velocity = Vector2(0, 0)
+		carried_item.thrown()
+		carried_item = null
+		weapon_sprite.visible = true
+		weapon_sprite.dumb_fire()

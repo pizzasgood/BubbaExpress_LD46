@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://LaserTurret.gd" type="Script" id=1]
+[ext_resource path="res://tex/RotatingGun.png" type="Texture" id=2]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -4.75236, -0.146692, -2.55942, -4.02088, 1.09548, -4.24018, 2.04575, -0.512182, 6.87022, 0.0726013, 2.19195, 1.24217, 1.31477, 3.8737, -3.2904, 3.8006 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( 2.26505, -5.77523, 2.92293, -1.53555, 15.2034, -1.53555, 15.1303, 1.68076, 3.14222, 1.75385, 2.11885, 5.26256, -4.02138, 5.40875, -6.7991, -0.365986, -3.72899, -5.70214 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

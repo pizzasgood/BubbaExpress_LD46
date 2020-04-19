@@ -34,6 +34,10 @@ func fire():
 		$CooldownTimer.start()
 		$ShootSound.play()
 
+func dumb_fire():
+	ready_to_fire = false
+	$CooldownTimer.start()
+
 func find_owner(node = get_parent()):
 	if "hp" in node:
 		return node

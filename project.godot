@@ -8,9 +8,38 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Bot",
+"language": "GDScript",
+"path": "res://Bot.gd"
+}, {
+"base": "Bot",
+"class": "BotAerial",
+"language": "GDScript",
+"path": "res://BOT-Aerial.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Drop",
+"language": "GDScript",
+"path": "res://Drop.gd"
+}, {
+"base": "Drop",
+"class": "LaserTurret",
+"language": "GDScript",
+"path": "res://LaserTurret.gd"
+}, {
+"base": "Drop",
+"class": "Scrap",
+"language": "GDScript",
+"path": "res://Scrap.gd"
+} ]
 _global_script_class_icons={
-
+"Bot": "",
+"BotAerial": "",
+"Drop": "",
+"LaserTurret": "",
+"Scrap": ""
 }
 
 [application]

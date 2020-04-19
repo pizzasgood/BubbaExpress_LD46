@@ -14,19 +14,20 @@ var target : Node2D = null
 var target_in_range := false
 
 onready var projectile = preload("res://LaserBolt.tscn")
+onready var drop = preload("res://LaserTurret.tscn")
 
 func _ready():
-	pass
+	register_with_owner()
 
 func _process(delta):
 	if active:
 		acquire_target()
 
-	if target != null:
-		look_at(target.global_position)
+		if target != null:
+			look_at(target.global_position)
 
-	if target_in_range and ready_to_fire:
-		fire()
+		if target_in_range and ready_to_fire:
+			fire()
 
 func acquire_target():
 	target = null
@@ -44,6 +45,7 @@ func acquire_target():
 func fire():
 	if ready_to_fire:
 		var p = projectile.instance()
+		p.ignore = find_owner()
 		p.global_transform = global_transform
 		var direction = Vector2.RIGHT.rotated(global_rotation)
 		p.velocity = speed * direction
@@ -53,5 +55,25 @@ func fire():
 		$CooldownTimer.start()
 		$ShootSound.play()
 
+func find_owner(node = get_parent()):
+	if "hp" in node:
+		return node
+	elif node.get_parent() != null:
+		return find_owner(node.get_parent())
+	else:
+		return null
+
 func _on_CooldownTimer_timeout():
 	ready_to_fire = true
+
+func register_with_owner():
+	var owner = find_owner()
+	if owner == null:
+		return
+	if owner.has_method("register_weapon"):
+		owner.register_weapon(self)
+
+func generate_drops():
+	var d = drop.instance()
+	d.global_position = global_position
+	get_tree().get_current_scene().find_node("Level").add_child(d)

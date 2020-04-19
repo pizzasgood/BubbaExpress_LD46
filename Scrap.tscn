@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scrap.gd" type="Script" id=1]
+[ext_resource path="res://tex/Scrap.png" type="Texture" id=2]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -4.02465, -10.1663, 8.36018, -10.0766, 9.43712, -0.294363, 5.57808, 11.2828, -7.97343, 11.552, -3.84516, -1.10207 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -5.7298, -12.4997, 10.873, -12.2305, 12.6679, -5.23034, 12.4885, 2.2185, 9.43712, 13.6161, -10.6658, 13.6161, -10.7555, 10.475, -5.9093, -2.26876, -6.44777, -9.26888 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
