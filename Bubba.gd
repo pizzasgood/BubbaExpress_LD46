@@ -95,3 +95,11 @@ func die():
 
 func win():
 	get_tree().get_current_scene().find_node("Victory").activate()
+
+
+func _on_Healing_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_Healing_body_exited(body):
+	pass # Replace with function body.

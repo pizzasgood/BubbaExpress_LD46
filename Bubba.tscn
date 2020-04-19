@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tex/BubbaHead.png" type="Texture" id=1]
 [ext_resource path="res://tex/BubbaBody.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://sfx/engine.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Recycler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mountpoint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://HealingSpot.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 351.095, 3.86005 )
@@ -99,6 +100,8 @@ bus = "SFX"
 [node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 bus = "SFX"
+
+[node name="HealingSpot" parent="." instance=ExtResource( 8 )]
 
 [node name="Mountpoint" parent="." instance=ExtResource( 7 )]
 position = Vector2( 255, 40 )

@@ -42,7 +42,7 @@ polygon = PoolVector2Array( -47.0487, 15.0313, -47.0487, 5.02017, -36.9155, -15.
 
 [node name="BodySprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="RotatingGun" parent="BodySprite" instance=ExtResource( 1 )]
@@ -81,6 +81,7 @@ initial_velocity_random = 0.75
 angular_velocity = 180.0
 angular_velocity_random = 0.75
 scale_amount = 4.0
+scale_amount_random = 1.0
 color = Color( 1, 0.631373, 0, 1 )
 hue_variation = 0.1
 hue_variation_random = 1.0
