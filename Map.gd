@@ -12,12 +12,13 @@ var terrain_names = [
 	"ExtraRough",
 	"AcidPools",
 	"BigAcidPool",
+	"City",
 ]
 
 var terrains = []
 
 var left_data = [ 5, 6 ]
-var map_data = [ 0, 0, 5, 1, 0, 2, 3, 1, 2, 5, 3, 4, 6, 1, 4, 0, 6, 6 ]
+var map_data = [ 0, 0, 5, 1, 0, 2, 3, 1, 2, 5, 3, 4, 6, 1, 4, 7, 6, 6 ]
 
 func _ready():
 	for name in terrain_names:

@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://terrain/City.gd" type="Script" id=1]
+[ext_resource path="res://RotatingGun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://terrain/City.png" type="Texture" id=3]
+
+[node name="Ground" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 25
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = -1
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -510.901, -5, -451.924, -7.74686, -406.483, -3.45999, -360.185, -10.319, -281.329, -9.59283, -236.216, -13.5734, -181.816, -1.63181, -116.137, -10.9197, -21.9313, -3.62207, 51.7084, -7.6026, 143.26, -4.94891, 224.861, -0.968384, 301.154, -8.26602, 340.296, -3.62207, 409.292, -0.304962, 473.465, 0.441833, 512, -5, 512, 255.112, -512, 255.544 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DefensePost" type="Node2D" parent="."]
+position = Vector2( -436.873, -81.1895 )
+
+[node name="RotatingGun" parent="DefensePost" instance=ExtResource( 2 )]
+position = Vector2( -0.495697, -42.8147 )
+
+[node name="RotatingGun2" parent="DefensePost" instance=ExtResource( 2 )]
+position = Vector2( -29.0428, -14.8105 )
+
+[node name="RotatingGun3" parent="DefensePost" instance=ExtResource( 2 )]
+position = Vector2( -29.0428, 18.1895 )
+
+[node name="RotatingGun5" parent="DefensePost" instance=ExtResource( 2 )]
+position = Vector2( 28.2552, -14.8105 )
+
+[node name="RotatingGun4" parent="DefensePost" instance=ExtResource( 2 )]
+position = Vector2( 28.2552, 18.1895 )
+
+[node name="DefensePost2" type="Node2D" parent="."]
+position = Vector2( -427.814, 96.4302 )
+
+[node name="RotatingGun" parent="DefensePost2" instance=ExtResource( 2 )]
+position = Vector2( -0.495697, -42.8147 )
+
+[node name="RotatingGun2" parent="DefensePost2" instance=ExtResource( 2 )]
+position = Vector2( -29.0428, -14.8105 )
+
+[node name="RotatingGun3" parent="DefensePost2" instance=ExtResource( 2 )]
+position = Vector2( -29.0428, 18.1895 )
+
+[node name="RotatingGun5" parent="DefensePost2" instance=ExtResource( 2 )]
+position = Vector2( 28.2552, -14.8105 )
+
+[node name="RotatingGun4" parent="DefensePost2" instance=ExtResource( 2 )]
+position = Vector2( 28.2552, 18.1895 )
