@@ -4,7 +4,7 @@ var walk_height = 150
 var stand_speed = 100
 var walk_speed = 100
 
-var max_hp = 10000
+var max_hp := 10000
 var hp : int = max_hp setget hp_set
 onready var hp_bar : ProgressBar = get_tree().get_current_scene().find_node("BubbaBar")
 var friendly := true
@@ -59,8 +59,8 @@ func _on_WakeTimer_timeout():
 func _on_ReadyTimer_timeout():
 	get_moving()
 
-func hp_set(new_hp):
-	hp = min(new_hp, max_hp)
+func hp_set(new_hp : int):
+	hp = int(min(new_hp, max_hp))
 	hp_bar.value = hp
 	if hp <= 0:
 		call_deferred("die")

@@ -89,14 +89,14 @@ func _handle_input():
 func _on_DamageFlash_timeout():
 	sprite.modulate = Color(1, 1, 1, 1)
 
-func hp_set(new_hp):
+func hp_set(new_hp : int):
 	if new_hp > hp:
 		sprite.modulate = Color(0, 1, 1, 1)
 	else:
 		sprite.modulate = Color(1, 0, 0, 1)
 	$DamageFlash.start()
 	$OwSound.play()
-	hp = min(new_hp, max_hp)
+	hp = int(min(new_hp, max_hp))
 	hp_bar.value = hp
 	if hp <= 0:
 		call_deferred("die")
