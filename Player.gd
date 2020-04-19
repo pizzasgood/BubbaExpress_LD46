@@ -153,6 +153,8 @@ func set_drop_zone(entered : bool, zone):
 		current_drop_zone = null
 
 func deploy_item():
+	if carried_item == null:
+		return
 	if current_drop_zone.accepts_item(carried_item):
 		current_drop_zone.deploy(carried_item)
 		item_released()
