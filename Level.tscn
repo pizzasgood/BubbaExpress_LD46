@@ -4,7 +4,7 @@
 [ext_resource path="res://Bubba.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Map.tscn" type="PackedScene" id=3]
 [ext_resource path="res://BOTDoubleRotor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scrap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://LaserTurret.tscn" type="PackedScene" id=5]
 
 [node name="Level" type="Node2D"]
 
@@ -20,4 +20,4 @@ position = Vector2( 484.051, 435.918 )
 position = Vector2( 1983.92, -70.5037 )
 
 [node name="RigidBody2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 557.716, 361.762 )
+position = Vector2( 578.818, 382.864 )

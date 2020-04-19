@@ -8,7 +8,10 @@ var jump_control_time = 500 #ms
 var jump_started = 0
 var current_drop_zone = null
 
-var hp = 100 setget hp_set
+var max_hp := 100
+var hp : int = max_hp setget hp_set
+onready var hp_bar : ProgressBar = get_tree().get_current_scene().find_node("PlayerBar")
+var friendly := true
 
 var carried_item = null
 
@@ -16,8 +19,10 @@ onready var sprite = find_node("BodySprite")
 onready var arm_sprite = find_node("ArmSprite")
 onready var weapon_sprite = find_node("WeaponSprite")
 
+
 func _ready():
-	pass
+	hp_bar.max_value = max_hp
+	hp_bar.value = hp
 
 func _physics_process(delta):
 	_handle_input()
@@ -86,12 +91,13 @@ func _on_DamageFlash_timeout():
 
 func hp_set(new_hp):
 	if new_hp > hp:
-		sprite.modulate = Color(0, 1, 0.25, 1)
+		sprite.modulate = Color(0, 1, 1, 1)
 	else:
 		sprite.modulate = Color(1, 0, 0, 1)
 	$DamageFlash.start()
 	$OwSound.play()
-	hp = new_hp
+	hp = min(new_hp, max_hp)
+	hp_bar.value = hp
 	if hp <= 0:
 		call_deferred("die")
 

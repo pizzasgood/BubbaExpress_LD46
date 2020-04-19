@@ -13,24 +13,92 @@
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchor_right = 1.0
+[node name="Meters" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 0.5
 anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
-margin_right = 1024.0
-margin_bottom = 600.0
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Meters"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 502.0
+margin_bottom = 590.0
+columns = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Meters/GridContainer"]
+margin_right = 54.0
+margin_bottom = 28.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Meters/GridContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 47.0
+margin_bottom = 21.0
+text = "Player"
+
+[node name="PlayerBar" type="ProgressBar" parent="CanvasLayer/Meters/GridContainer"]
+margin_left = 58.0
+margin_right = 492.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Meters/GridContainer"]
+margin_top = 32.0
+margin_right = 54.0
+margin_bottom = 60.0
+
+[node name="Label2" type="Label" parent="CanvasLayer/Meters/GridContainer/PanelContainer2"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 47.0
+margin_bottom = 21.0
+text = "Bubba"
+
+[node name="BubbaBar" type="ProgressBar" parent="CanvasLayer/Meters/GridContainer"]
+margin_left = 58.0
+margin_top = 32.0
+margin_right = 492.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Buttons"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
 alignment = 2
 
-[node name="MuteButtonSFX" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource( 6 )]
-margin_left = 956.0
-margin_right = 988.0
+[node name="MuteButtonSFX" parent="CanvasLayer/Buttons/HBoxContainer" instance=ExtResource( 6 )]
+margin_left = 936.0
+margin_right = 968.0
+margin_bottom = 580.0
 
-[node name="MuteButtonBGM" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 992.0
+[node name="MuteButtonBGM" parent="CanvasLayer/Buttons/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 972.0
+margin_right = 1004.0
+margin_bottom = 580.0
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 2 )]
 visible = false

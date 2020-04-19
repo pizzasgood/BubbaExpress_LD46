@@ -3,18 +3,17 @@ extends Node2D
 export var damage : float = 20.0
 export var max_range : float = 700
 onready var max_range_squared : float = pow(max_range, 2)
-export var speed : float = 500
+export var speed : float = 800
 var ready_to_fire := true
 export var holding_fire := false
 export var active := true
-export var friendly := false
 
 
 var target : Node2D = null
 var target_in_range := false
 
-onready var projectile = preload("res://LaserBolt.tscn")
-onready var drop = preload("res://LaserTurret.tscn")
+onready var projectile = load("res://LaserBolt.tscn")
+onready var drop = load("res://LaserTurret.tscn")
 
 func _ready():
 	register_with_owner()
@@ -33,7 +32,11 @@ func acquire_target():
 	target = null
 	target_in_range = false
 	var best_distance = max_range_squared * 2
-	var potentials = get_tree().get_nodes_in_group("friends")
+	var potentials
+	if find_owner().friendly:
+		potentials = get_tree().get_nodes_in_group("enemies")
+	else:
+		potentials = get_tree().get_nodes_in_group("friends")
 	for i in potentials:
 		var d = global_position.distance_squared_to(i.global_position)
 		if d < best_distance:
@@ -45,7 +48,7 @@ func acquire_target():
 func fire():
 	if ready_to_fire:
 		var p = projectile.instance()
-		p.ignore = find_owner()
+		p.friendly = find_owner().friendly
 		p.global_transform = global_transform
 		var direction = Vector2.RIGHT.rotated(global_rotation)
 		p.velocity = speed * direction

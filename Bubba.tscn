@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tex/BubbaHead.png" type="Texture" id=1]
 [ext_resource path="res://tex/BubbaBody.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://sfx/rumble.ogg" type="AudioStream" id=4]
 [ext_resource path="res://sfx/engine.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Recycler.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Mountpoint.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 351.095, 3.86005 )
@@ -84,7 +85,7 @@ __meta__ = {
 }
 
 [node name="Recycler" parent="." instance=ExtResource( 6 )]
-position = Vector2( -130.004, 144.325 )
+position = Vector2( -130, 144 )
 
 [node name="WakeTimer" type="Timer" parent="."]
 one_shot = true
@@ -99,5 +100,11 @@ bus = "SFX"
 [node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 bus = "SFX"
+
+[node name="Mountpoint" parent="." instance=ExtResource( 7 )]
+position = Vector2( 255, 40 )
+
+[node name="Mountpoint2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -255, 40 )
 [connection signal="timeout" from="WakeTimer" to="." method="_on_WakeTimer_timeout"]
 [connection signal="timeout" from="ReadyTimer" to="." method="_on_ReadyTimer_timeout"]

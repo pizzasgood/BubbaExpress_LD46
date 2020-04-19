@@ -1,10 +1,10 @@
 extends Sprite
 
-export var damage : float = 20.0
+export var damage := 20
 export var speed : float = 800
 var ready_to_fire := true
 
-onready var projectile = preload("res://LaserBolt.tscn")
+onready var projectile = load("res://LaserBolt.tscn")
 onready var emission_point = find_node("EmissionPoint")
 onready var emission_point_base_pos = emission_point.position
 
@@ -24,7 +24,7 @@ func _process(delta):
 func fire():
 	if ready_to_fire:
 		var p = projectile.instance()
-		p.ignore = find_owner()
+		p.friendly = find_owner().friendly
 		p.global_transform = emission_point.global_transform
 		var direction = Vector2.RIGHT.rotated(emission_point.global_rotation)
 		p.velocity = speed * direction

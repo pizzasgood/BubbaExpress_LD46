@@ -2,14 +2,16 @@ extends KinematicBody2D
 
 class_name Bot
 
-var hp = 100 setget hp_set
+var hp := 100 setget hp_set
+var friendly := false
+
 onready var sprite = find_node("BodySprite")
-onready var drop = preload("res://Scrap.tscn")
+onready var drop = load("res://Scrap.tscn")
 
 var weapons = []
 
 func _ready():
-	pass
+	add_to_group("enemies")
 
 func _on_DamageFlash_timeout():
 	sprite.modulate = Color(1, 1, 1, 1)

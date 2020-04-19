@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://tex/Recycler.png" type="Texture" id=1]
-[ext_resource path="res://Recycler.gd" type="Script" id=2]
-[ext_resource path="res://sfx/blurp.wav" type="AudioStream" id=3]
+[ext_resource path="res://tex/Mountpoint.png" type="Texture" id=1]
+[ext_resource path="res://Mountpoint.gd" type="Script" id=2]
+[ext_resource path="res://sfx/upgrade.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 23, 23 )
+extents = Vector2( 15, 15 )
 
-[node name="Recycler" type="Area2D"]
+[node name="Mountpoint" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
