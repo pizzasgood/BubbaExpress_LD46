@@ -71,6 +71,7 @@ func hp_set(new_hp : int):
 	if new_hp > hp:
 		pass
 	else:
+		$OwSound.play()
 		var chance = 1 if hp <= 0 else float(hp - new_hp) / float(hp)
 		if randf() < chance:
 			explode_weapon()
