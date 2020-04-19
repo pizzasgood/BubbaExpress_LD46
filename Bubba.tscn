@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://tex/BubbaHead.png" type="Texture" id=1]
 [ext_resource path="res://tex/BubbaBody.png" type="Texture" id=2]
@@ -8,9 +8,10 @@
 [ext_resource path="res://Recycler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mountpoint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://HealingSpot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://tex/BubbaNeck.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 17.3553, 3.67123 )
+extents = Vector2( 18.106, 3.67123 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 351.095, 3.86005 )
@@ -19,6 +20,13 @@ extents = Vector2( 351.095, 3.86005 )
 collision_layer = 4
 collision_mask = 20
 script = ExtResource( 3 )
+
+[node name="NeckSprite" type="Sprite" parent="."]
+position = Vector2( 448.108, 151.891 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BodySprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -34,12 +42,18 @@ __meta__ = {
 }
 
 [node name="Roof" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -229.036, -98.4734, -63.7736, -263.377, 100.055, -98.8318, 97.5453, -96.6809, -63.7736, -258, -225.81, -95.964 )
+polygon = PoolVector2Array( -229.987, -101.61, -64.0054, -184.486, 102.219, -101.628, 98.7193, -97.32, -64.004, -179.793, -227.448, -97.7628 )
 one_way_collision = true
 one_way_collision_margin = 8.0
 
 [node name="Seat" type="CollisionShape2D" parent="."]
 position = Vector2( 208.827, -165.683 )
+shape = SubResource( 2 )
+one_way_collision = true
+one_way_collision_margin = 8.0
+
+[node name="Ladder" type="CollisionShape2D" parent="."]
+position = Vector2( 208.827, -83.6827 )
 shape = SubResource( 2 )
 one_way_collision = true
 one_way_collision_margin = 8.0
@@ -55,7 +69,7 @@ __meta__ = {
 
 [node name="LowerLevel" type="CollisionPolygon2D" parent="."]
 position = Vector2( -9.92749, 96.5675 )
-polygon = PoolVector2Array( -404.678, 7.84546, -372.603, -24, 392.293, -24, 424.745, 8.60017, 417.977, 8.35815, 390.814, -20, -371.002, -20, -399.549, 7.85013 )
+polygon = PoolVector2Array( -404.678, 7.84546, -372.603, -24, 392.293, -24, 425.624, 8.92161, 425.413, 16, 494.521, 16, 496.29, 20.6993, 421.207, 19.4111, 421.018, 11.0199, 390.814, -20, -371.002, -20, -399.549, 7.85013 )
 one_way_collision = true
 one_way_collision_margin = 8.0
 __meta__ = {
@@ -116,6 +130,7 @@ stream = ExtResource( 5 )
 bus = "SFX"
 
 [node name="HealingSpot" parent="." instance=ExtResource( 8 )]
+position = Vector2( -24.9383, -50.5783 )
 
 [node name="Mountpoint" parent="." instance=ExtResource( 7 )]
 position = Vector2( 255, 40 )
