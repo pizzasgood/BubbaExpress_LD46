@@ -9,7 +9,7 @@ func _ready():
 func _on_body_entered(body):
 	if body.has_method("set_drop_zone"):
 		body.set_drop_zone(true, self)
-		$Sprite.modulate = Color(1.25, 1.25, 1.25, 1)
+		$Sprite.modulate = Color(1.5, 1.5, 1.5, 1)
 
 func _on_body_exited(body):
 	if body.has_method("set_drop_zone"):
