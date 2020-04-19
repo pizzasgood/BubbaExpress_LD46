@@ -44,9 +44,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Bubba Express"
+config/name="B.U.B.B.A. Express"
 config/description="Ludum Dare 46 Compo entry.  Theme: Keep it alive."
 run/main_scene="res://TitleScreen.tscn"
+config/icon="res://tex/BubbaHead.png"
 
 [autoload]
 
