@@ -27,7 +27,7 @@ __meta__ = {
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Meters"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 502.0
+margin_right = 950.0
 margin_bottom = 590.0
 columns = 2
 
@@ -45,7 +45,7 @@ align = 1
 
 [node name="PlayerBar" type="ProgressBar" parent="CanvasLayer/Meters/GridContainer"]
 margin_left = 84.0
-margin_right = 492.0
+margin_right = 940.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -66,7 +66,7 @@ align = 1
 [node name="BubbaBar" type="ProgressBar" parent="CanvasLayer/Meters/GridContainer"]
 margin_left = 84.0
 margin_top = 32.0
-margin_right = 492.0
+margin_right = 940.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -88,18 +88,18 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Buttons"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 1014.0
+margin_right = 1910.0
 margin_bottom = 590.0
 alignment = 2
 
 [node name="MuteButtonSFX" parent="CanvasLayer/Buttons/HBoxContainer" instance=ExtResource( 6 )]
-margin_left = 936.0
-margin_right = 968.0
+margin_left = 1832.0
+margin_right = 1864.0
 margin_bottom = 580.0
 
 [node name="MuteButtonBGM" parent="CanvasLayer/Buttons/HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 972.0
-margin_right = 1004.0
+margin_left = 1868.0
+margin_right = 1900.0
 margin_bottom = 580.0
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 2 )]
