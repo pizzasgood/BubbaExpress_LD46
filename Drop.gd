@@ -24,6 +24,9 @@ func thrown():
 	mode = RigidBody2D.MODE_RIGID
 	enable_collision()
 
+func reject():
+	claimed = false
+
 func disable_collision():
 	_collision_layer_backup = collision_layer
 	_collision_mask_backup = collision_mask

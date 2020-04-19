@@ -120,6 +120,8 @@ func pick_up(item):
 		arm_sprite.add_child(carried_item)
 		carried_item.position = weapon_sprite.position
 		weapon_sprite.visible = false
+	else:
+		item.reject()
 
 func use_item():
 	if carried_item == null:
