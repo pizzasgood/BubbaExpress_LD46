@@ -23,7 +23,7 @@ func _process(delta):
 		acquire_target()
 
 	if target != null:
-		look_at(target.position)
+		look_at(target.global_position)
 
 	if target_in_range and ready_to_fire:
 		fire()
@@ -34,7 +34,7 @@ func acquire_target():
 	var best_distance = max_range_squared * 2
 	var potentials = get_tree().get_nodes_in_group("friends")
 	for i in potentials:
-		var d = position.distance_squared_to(i.position)
+		var d = global_position.distance_squared_to(i.global_position)
 		if d < best_distance:
 			target = i
 			best_distance = d
@@ -42,15 +42,16 @@ func acquire_target():
 		target_in_range = true
 
 func fire():
-	var p = projectile.instance()
-	p.transform = transform
-	p.direction = (target.position - position).normalized()
-	p.speed = speed
-	p.damage = damage
-	get_tree().get_current_scene().find_node("Level").add_child(p)
-	ready_to_fire = false
-	$CooldownTimer.start()
-	$ShootSound.play()
+	if ready_to_fire:
+		var p = projectile.instance()
+		p.global_transform = global_transform
+		var direction = Vector2.RIGHT.rotated(global_rotation)
+		p.velocity = speed * direction
+		p.damage = damage
+		get_tree().get_current_scene().find_node("Level").add_child(p)
+		ready_to_fire = false
+		$CooldownTimer.start()
+		$ShootSound.play()
 
 func _on_CooldownTimer_timeout():
 	ready_to_fire = true

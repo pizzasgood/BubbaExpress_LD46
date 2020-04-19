@@ -13,6 +13,7 @@ var hp = 100 setget hp_set
 
 onready var sprite = find_node("BodySprite")
 onready var arm_sprite = find_node("ArmSprite")
+onready var weapon_sprite = find_node("WeaponSprite")
 
 func _ready():
 	pass
@@ -72,9 +73,14 @@ func _handle_input():
 	var mouse_pos = get_viewport().canvas_transform.inverse() * get_viewport().get_mouse_position()
 	sprite.flip_h = mouse_pos.x < global_position.x
 	arm_sprite.flip_v = mouse_pos.x < global_position.x
+	weapon_sprite.flip_v = mouse_pos.x < global_position.x
 
 	# point the gun
 	arm_sprite.look_at(mouse_pos)
+
+	# shoot at stuff
+	if Input.is_action_pressed("fire"):
+		weapon_sprite.fire()
 
 func _on_DamageFlash_timeout():
 	sprite.modulate = Color(1, 1, 1, 1)
