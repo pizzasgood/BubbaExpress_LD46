@@ -7,12 +7,13 @@ export var speed : float = 800
 var ready_to_fire := true
 export var holding_fire := false
 export var active := true
-
+export var volatile := true
 
 var target : Node2D = null
 
 onready var projectile = load("res://LaserBolt.tscn")
 onready var drop = load("res://LaserTurret.tscn")
+onready var scrap = load("res://Scrap.tscn")
 
 func _ready():
 	register_with_owner()
@@ -82,7 +83,25 @@ func register_with_owner():
 	if owner.has_method("register_weapon"):
 		owner.register_weapon(self)
 
+func unregister_with_owner():
+	var owner = find_owner()
+	if owner == null:
+		return
+	if owner.has_method("unregister_weapon"):
+		owner.unregister_weapon(self)
+
 func generate_drops():
 	var d = drop.instance()
 	d.global_position = global_position
 	get_tree().get_current_scene().find_node("Level").add_child(d)
+
+func die():
+	if volatile:
+		volatile = false
+		active = false
+		visible = false
+		drop = scrap
+		unregister_with_owner()
+		call_deferred("generate_drops")
+		queue_free()
+		# TODO: rune explosion particle effect

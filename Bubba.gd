@@ -5,7 +5,7 @@ var stand_speed = 100
 var walk_speed = 100
 
 var max_hp := 10000
-var hp : int = max_hp setget hp_set
+var hp : int = 0.2 * max_hp setget hp_set
 onready var hp_bar : ProgressBar = get_tree().get_current_scene().find_node("BubbaBar")
 var friendly := true
 
@@ -68,6 +68,12 @@ func _on_ReadyTimer_timeout():
 	get_moving()
 
 func hp_set(new_hp : int):
+	if new_hp > hp:
+		pass
+	else:
+		var amount = hp - new_hp
+		if randf() < (float(amount) / float(hp)):
+			explode_weapon()
 	hp = int(min(new_hp, max_hp))
 	hp_bar.value = hp
 	if hp <= 0:
@@ -75,6 +81,14 @@ func hp_set(new_hp : int):
 
 func register_weapon(weapon):
 	weapons.append(weapon)
+
+func unregister_weapon(weapon):
+	weapons.erase(weapon)
+
+func explode_weapon():
+	var num_weapons = len(weapons)
+	if num_weapons > 0:
+		weapons[randi() % num_weapons].die()
 
 func die():
 	get_tree().get_current_scene().find_node("GameOver").activate()

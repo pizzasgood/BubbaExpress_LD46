@@ -2,7 +2,8 @@ extends KinematicBody2D
 
 class_name Bot
 
-var hp := 100 setget hp_set
+var max_hp := 100
+var hp : int = max_hp setget hp_set
 var friendly := false
 
 onready var sprite = find_node("BodySprite")
@@ -21,14 +22,25 @@ func hp_set(new_hp):
 		sprite.modulate = Color(0, 1, 0.25, 1)
 	else:
 		sprite.modulate = Color(1, 0, 0, 1)
-	$DamageFlash.start()
+		var amount = hp - new_hp
+		if randf() < (float(amount) / float(hp)):
+			explode_weapon()
 	$OwSound.play()
-	hp = new_hp
+	$DamageFlash.start()
+	hp = int(min(new_hp, max_hp))
 	if hp <= 0:
 		call_deferred("die")
 
 func register_weapon(weapon):
 	weapons.append(weapon)
+
+func unregister_weapon(weapon):
+	weapons.erase(weapon)
+
+func explode_weapon():
+	var num_weapons = len(weapons)
+	if num_weapons > 0:
+		weapons[randi() % num_weapons].die()
 
 func die():
 	$DeadSound.play()
