@@ -17,7 +17,7 @@ func _on_body_exited(body):
 		$Sprite.modulate = Color(1, 1, 1, 1)
 
 func accepts_item(item) -> bool:
-	return "upgrade" in item and mounted_item == null
+	return ("upgrade" in item) and mounted_item == null
 
 func deploy(item):
 	mounted_item = item.upgrade.instance()

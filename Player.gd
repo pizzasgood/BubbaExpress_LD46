@@ -19,6 +19,7 @@ onready var sprite = find_node("BodySprite")
 onready var arm_sprite = find_node("ArmSprite")
 onready var weapon_sprite = find_node("WeaponSprite")
 
+var platform_collision_layer = int(pow(2, 2))
 
 func _ready():
 	hp_bar.max_value = max_hp
@@ -47,6 +48,13 @@ func _handle_input():
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= max_speed
 
+	#drop-through platforms
+	if Input.is_action_pressed("ui_down"):
+		collision_layer &= int(pow(2, 20)) - 1 - platform_collision_layer
+		collision_mask &= int(pow(2, 20)) - 1 - platform_collision_layer
+	else:
+		collision_layer |= platform_collision_layer
+		collision_mask |= platform_collision_layer
 
 	#jump
 	if Input.is_action_pressed("jump"):

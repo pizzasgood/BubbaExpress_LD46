@@ -12,10 +12,19 @@
 extents = Vector2( 351.095, 3.86005 )
 
 [node name="Bubba" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 20
 script = ExtResource( 3 )
 
 [node name="BodySprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HeadSprite" type="Sprite" parent="."]
+position = Vector2( 555.876, 123.606 )
+texture = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -56,19 +65,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Head" type="KinematicBody2D" parent="."]
+[node name="Forehead" type="CollisionPolygon2D" parent="."]
 position = Vector2( 555.876, 123.606 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="HeadSprite" type="Sprite" parent="Head"]
-texture = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Head"]
 polygon = PoolVector2Array( -120.44, -96.1751, -49.5862, -93.2633, 28.3854, -84.2044, 78.8567, -68.9983, 103.122, -34.0567, 111.857, -0.0856476, 104.001, -4.6434, 96.0566, -33.0757, 75.1506, -63.1804, 27.9029, -76.1422, -50.7039, -86.1771, -109.659, -89.522 )
 one_way_collision = true
 one_way_collision_margin = 8.0
@@ -76,7 +74,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Head"]
+[node name="Jaw" type="CollisionPolygon2D" parent="."]
+position = Vector2( 555.876, 123.606 )
 polygon = PoolVector2Array( -62.0457, 61.1681, -54.0544, 38.1163, -38.6865, 18.7528, -27.3143, 9.2247, -15.942, 10.1468, -12.8685, 18.1381, -15.942, 30.7397, -23.3186, 51.64, -7.02869, 57.4798, 1.8847, 57.4798, 9.56866, 53.1768, 13.5643, 49.1812, 20.6335, 49.1812, 24.3218, 52.5621, 25.5513, 60.8608, 30.1616, 61.4755, 34.1572, 53.7915, 43.0707, 49.4885, 50.4472, 52.2548, 52.9061, 57.4798, 51.0619, 66.7006, 56.9017, 68.5447, 59.3606, 59.324, 65.5078, 54.4063, 72.8843, 55.9431, 74.1138, 62.3976, 71.9623, 69.4668, 81.4904, 68.8521, 85.486, 63.9344, 88.8669, 57.4798, 98.7024, 57.7872, 101.161, 62.7049, 100.854, 67.6227, 83.3345, 74.0771, 61.2047, 73.4624, -31.6172, 55.6357, -24.8554, 36.5795, -18.4009, 16.6013, -25.4701, 14.7571, -49.7513, 40.2678, -55.8985, 61.1681 )
 one_way_collision = true
 one_way_collision_margin = 8.0
