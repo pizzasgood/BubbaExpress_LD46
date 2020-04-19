@@ -5,7 +5,7 @@
 [ext_resource path="res://sfx/upgrade.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24, 24 )
+extents = Vector2( 32, 24 )
 
 [node name="Mountpoint" type="Area2D"]
 script = ExtResource( 2 )

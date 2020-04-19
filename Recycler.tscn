@@ -5,7 +5,7 @@
 [ext_resource path="res://sfx/blurp.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 23, 23 )
+extents = Vector2( 48, 23 )
 
 [node name="Recycler" type="Area2D"]
 script = ExtResource( 2 )
