@@ -9,6 +9,8 @@ var hp : int = max_hp setget hp_set
 onready var hp_bar : ProgressBar = get_tree().get_current_scene().find_node("BubbaBar")
 var friendly := true
 
+onready var map = get_tree().get_current_scene().find_node("Map")
+
 enum { BURROWED, WAKING, RISING, STANDING, WALKING }
 var state = BURROWED
 
@@ -17,6 +19,10 @@ func _ready():
 	hp_bar.value = hp
 	wake()
 
+func _process(delta):
+	var progress = map.get_progress(position.x)
+	if progress > 1:
+		call_deferred("win")
 
 func _physics_process(delta):
 	match state:
@@ -67,3 +73,6 @@ func hp_set(new_hp : int):
 
 func die():
 	get_tree().get_current_scene().find_node("GameOver").activate()
+
+func win():
+	get_tree().get_current_scene().find_node("Victory").activate()
