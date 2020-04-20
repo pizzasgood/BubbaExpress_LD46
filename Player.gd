@@ -155,7 +155,7 @@ func item_released():
 func set_drop_zone(entered : bool, zone):
 	if entered:
 		current_drop_zone = zone
-	else:
+	elif current_drop_zone == zone:
 		current_drop_zone = null
 
 func deploy_item():

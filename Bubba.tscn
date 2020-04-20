@@ -12,10 +12,10 @@
 [ext_resource path="res://sfx/hit.wav" type="AudioStream" id=10]
 [ext_resource path="res://RotatingGun.tscn" type="PackedScene" id=11]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.106, 3.67123 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 351.095, 3.86005 )
 
 [node name="Bubba" type="KinematicBody2D"]
@@ -50,13 +50,13 @@ one_way_collision_margin = 8.0
 
 [node name="Seat" type="CollisionShape2D" parent="."]
 position = Vector2( 208.827, -165.683 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 one_way_collision = true
 one_way_collision_margin = 8.0
 
 [node name="Ladder" type="CollisionShape2D" parent="."]
 position = Vector2( 208.827, -83.6827 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 one_way_collision = true
 one_way_collision_margin = 8.0
 
@@ -80,7 +80,7 @@ __meta__ = {
 
 [node name="UpperRunningBoard" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 188 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 one_way_collision = true
 one_way_collision_margin = 8.0
 __meta__ = {
@@ -89,7 +89,7 @@ __meta__ = {
 
 [node name="LowerRunningBoard" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 252 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 one_way_collision = true
 one_way_collision_margin = 8.0
 __meta__ = {
