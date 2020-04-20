@@ -8,7 +8,7 @@ var jump_control_time = 500 #ms
 var jump_started = 0
 var current_drop_zone = null
 
-var max_hp : float = 100.0
+var max_hp : float = 200.0
 var hp : float = max_hp setget hp_set
 onready var hp_bar : ProgressBar = get_tree().get_current_scene().find_node("PlayerBar")
 var friendly := true

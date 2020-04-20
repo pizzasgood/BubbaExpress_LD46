@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 class_name Bot
 
-var max_hp := 100
+export var max_hp := 100
 var hp : int = max_hp setget hp_set
 var friendly := false
 

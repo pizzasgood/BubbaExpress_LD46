@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://RotatingGun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://RotorCW.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BOT-Aerial.gd" type="Script" id=3]
+[ext_resource path="res://sfx/boom.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://RotorCCW.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tex/BOT-Bertha.png" type="Texture" id=7]
+
+[node name="BOTBertha" type="KinematicBody2D"]
+script = ExtResource( 3 )
+max_hp = 500
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -39.5782, -1.38454, -59.3368, -13.2009, -35.5103, -35.2841, -35.3166, -54.6552, -62.2425, -56.786, -60.3054, -59.3043, 59.7958, -59.1106, 62.1203, -56.786, 60.1832, -54.8489, 35.1944, -55.0426, 35.5818, -34.3155, 57.665, -13.2009, 40.6183, -0.997108, 40.4246, 6.55764, 59.7958, 18.1803, 25.1214, 53.4359, 12.5302, 33.0961, -0.64222, 54.017, -12.6523, 32.7087, -25.0499, 53.6296, -57.7871, 18.7615, -40.1594, 6.75135 )
+
+[node name="BodySprite" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+
+[node name="RotatingGun" parent="BodySprite" instance=ExtResource( 1 )]
+position = Vector2( -56.9522, -13.128 )
+
+[node name="RotatingGun2" parent="BodySprite" instance=ExtResource( 1 )]
+position = Vector2( 57.3312, -13.4825 )
+
+[node name="RotatingGun4" parent="BodySprite" instance=ExtResource( 1 )]
+position = Vector2( -56.9522, 18.872 )
+
+[node name="RotatingGun3" parent="BodySprite" instance=ExtResource( 1 )]
+position = Vector2( 57.3312, 18.5175 )
+
+[node name="RotatingGun5" parent="BodySprite" instance=ExtResource( 1 )]
+position = Vector2( 25.2817, 52.0817 )
+
+[node name="RotatingGun6" parent="BodySprite" instance=ExtResource( 1 )]
+position = Vector2( -0.249004, 52.0817 )
+
+[node name="RotatingGun7" parent="BodySprite" instance=ExtResource( 1 )]
+position = Vector2( -25.5538, 52.3076 )
+
+[node name="RotorCCW" parent="BodySprite" instance=ExtResource( 6 )]
+position = Vector2( -32, -54 )
+z_index = -1
+frame = 4
+
+[node name="RotorCW" parent="BodySprite" instance=ExtResource( 2 )]
+position = Vector2( 32, -54 )
+z_index = -1
+frame = 4
+
+[node name="DamageFlash" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="OwSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX"
+
+[node name="DeadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+bus = "SFX"
+
+[node name="ExplosionEffect" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+initial_velocity = 200.0
+initial_velocity_random = 0.75
+angular_velocity = 180.0
+angular_velocity_random = 0.75
+scale_amount = 4.0
+scale_amount_random = 1.0
+color = Color( 1, 0.631373, 0, 1 )
+hue_variation = 0.1
+hue_variation_random = 1.0
+[connection signal="timeout" from="DamageFlash" to="." method="_on_DamageFlash_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

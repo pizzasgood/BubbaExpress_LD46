@@ -5,7 +5,7 @@ var stand_speed = 100
 var walk_speed = 100
 
 var max_hp := 10000
-var hp : int = 0.2 * max_hp setget hp_set
+var hp : int = 0.5 * max_hp setget hp_set
 onready var hp_bar : ProgressBar = get_tree().get_current_scene().find_node("BubbaBar")
 var friendly := true
 

@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://RotatingGun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tex/BOT-Gnat.png" type="Texture" id=2]
+[ext_resource path="res://BOT-Aerial.gd" type="Script" id=3]
+[ext_resource path="res://sfx/boom.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://RotorCCW.tscn" type="PackedScene" id=6]
+
+[node name="BOTGnat" type="KinematicBody2D"]
+script = ExtResource( 3 )
+max_hp = 50
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -14.9934, -11.1363, -4.16534, -31.3834, -3.00307, -49.0112, -27.7982, -49.0112, -30.5102, -51.142, -28.573, -52.8854, 28.3783, -53.2728, 29.928, -51.5294, 28.1846, -48.43, 3.002, -49.2049, 3.97056, -31.1897, 15.3996, -10.8499, 14.5248, -0.982868, 0.184387, 18.9052, -14.784, -0.878195 )
+
+[node name="BodySprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="RotatingGun" parent="BodySprite" instance=ExtResource( 1 )]
+position = Vector2( 0.0765915, 19.0624 )
+
+[node name="RotorCCW" parent="BodySprite" instance=ExtResource( 6 )]
+position = Vector2( 0, -48 )
+frame = 0
+
+[node name="DamageFlash" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="OwSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX"
+
+[node name="DeadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+bus = "SFX"
+
+[node name="ExplosionEffect" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+initial_velocity = 200.0
+initial_velocity_random = 0.75
+angular_velocity = 180.0
+angular_velocity_random = 0.75
+scale_amount = 4.0
+scale_amount_random = 1.0
+color = Color( 1, 0.631373, 0, 1 )
+hue_variation = 0.1
+hue_variation_random = 1.0
+[connection signal="timeout" from="DamageFlash" to="." method="_on_DamageFlash_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

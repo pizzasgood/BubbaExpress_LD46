@@ -1,55 +1,30 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://RotatingGun.tscn" type="PackedScene" id=1]
-[ext_resource path="res://tex/BOT-DoubleRotor.png" type="Texture" id=2]
+[ext_resource path="res://tex/BOT-Skeeter.png" type="Texture" id=2]
 [ext_resource path="res://BOT-Aerial.gd" type="Script" id=3]
 [ext_resource path="res://sfx/boom.wav" type="AudioStream" id=4]
 [ext_resource path="res://sfx/hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://RotorCCW.tscn" type="PackedScene" id=6]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 2 )
-region = Rect2( 128, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 256, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 384, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
-region = Rect2( 512, 0, 128, 128 )
-
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
-"loop": true,
-"name": "default",
-"speed": 30.0
-} ]
-
-[node name="BOTDoubleRotor" type="KinematicBody2D"]
+[node name="BOTSkeeter" type="KinematicBody2D"]
 script = ExtResource( 3 )
+max_hp = 75
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -47.0487, 15.0313, -47.0487, 5.02017, -36.9155, -15.1242, -34.9621, -18.4205, -35.2063, -32.7047, -60.2341, -32.8268, -61.8212, -35.1464, -59.7457, -37.0998, 60.1436, -37.344, 62.2191, -35.1464, 60.0216, -32.7047, 34.9937, -32.8268, 34.9937, -18.2984, 47.0803, 5.26434, 46.8362, 15.1534, 34.1391, 38.2278, 29.4998, 38.2278, 18.1457, 15.1534, -17.6257, 15.0313, -30.4449, 38.5941, -34.5958, 38.7162 )
+polygon = PoolVector2Array( -14.9934, -11.1363, -3.95839, -11.0701, -3.25909, -28.9022, -28.4339, -28.5526, -30.5318, -30.8253, -27.7346, -33.2729, 28.2094, -33.098, 30.3073, -31.0001, 28.3842, -28.9022, 3.38425, -28.5526, 3.20941, -11.2449, 15.3996, -10.8499, 31.6819, 0.256119, 14.609, 11.1276, -13.7922, 11.3846, -31.7626, 0.256119 )
 
-[node name="BodySprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 6 )
-frame = 4
-playing = true
+[node name="BodySprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
 
 [node name="RotatingGun" parent="BodySprite" instance=ExtResource( 1 )]
-position = Vector2( -32, 36 )
+position = Vector2( -28.7102, 0.428131 )
 
 [node name="RotatingGun2" parent="BodySprite" instance=ExtResource( 1 )]
-position = Vector2( 32, 36 )
+position = Vector2( 28.8633, 0.299618 )
+
+[node name="RotorCCW" parent="BodySprite" instance=ExtResource( 6 )]
+position = Vector2( 0, -28 )
 
 [node name="DamageFlash" type="Timer" parent="."]
 wait_time = 0.25
